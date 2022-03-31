@@ -3,19 +3,28 @@
 // An img
 // A description
 
-const randomPokemon = new Request("https://pokeapi.co/api/v2/pokemon/random")
-
-/* Render random pokemon card */
-const renderPokeCard = async () =>
+/* Pokemon API */
+const apiData = 
 {
-    // let response = await fetch("https://pokeapi.co/api/v2/pokemon/random")
-    // console.log(response.data)
-    
-    fetch(randomPokemon)
-
-    // fetch("https://pokeapi.co/api/v2/pokemon/random")
-        .then(response => response.json())
-        .then(data => console.log(data))
+    apiUrl: "https://pokeapi.co/api/v2/",
+    endpointPokemon: "pokemon/",
+    endpointCharacteristic: "characteristic/",
 }
 
-renderPokeCard()
+/* Render pokemon card with a random pokemon */
+const renderPokeCard = async () => 
+{
+    const random = Math.floor(Math.random() * 100) + 1
+    let url = apiData.apiUrl + apiData.endpointPokemon + random
+    await fetch(url)
+        .then(response => response.json())
+        .then(pokemon => 
+        {
+            document.querySelector(".pokemon-img").src = pokemon.sprites.other.dream_world.front_default
+            document.querySelector(".pokemon-name").textContent = pokemon.name
+            document.querySelector(".pokemon-id").textContent = "ID: " + pokemon.id
+        })
+        .catch(() => {console.error("Something went wrong!")})
+}
+
+document.querySelector("button").addEventListener("click", renderPokeCard)
