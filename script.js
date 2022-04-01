@@ -14,7 +14,7 @@ const apiData =
 /* Render pokemon card with a random pokemon */
 const renderPokeCard = async () => 
 {
-    const random = Math.floor(Math.random() * 100) + 1
+    const random = Math.floor(Math.random() * 1127) + 1
     let url = apiData.apiUrl + apiData.endpointPokemon + random
     await fetch(url)
         .then(response => response.json())

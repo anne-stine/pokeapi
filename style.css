@@ -46,25 +46,30 @@ h3 {
 }
 
 button {
-    background: none;
+    background: #3761a8;
+    color: #fff;
     border: none;
-    cursor: pointer;
-}
-
-button img {
-    height: 80px;
-    width: 80px;
     border-radius: 50px;
+    padding: 1em 1.2em;
+    cursor: pointer;
 }
 
 /* Box Shadows */
 
-.pokemon-card {
+.pokemon-card,
+button {
     box-shadow: 2px 2px 8px 4px rgba(0, 0, 0, 0.1);
     transition: all ease-out 300ms;
 }
 
-.pokemon-card:hover {
+/* Hover Effects */
+
+.pokemon-card:hover,
+button:hover {
     box-shadow: 2px 2px 8px 4px rgba(0, 0, 0, 0.2);
     transform: scale(1.0125);
+}
+
+button:hover {
+    background: #234f9b;
 }
